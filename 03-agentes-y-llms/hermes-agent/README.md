@@ -21,7 +21,13 @@ python -m hermes_agent --model openrouter/anthropic/claude-3.5-sonnet --tools te
 - Ejecución de scripts y pipelines de datos.
 - Orquestación de flujos de trabajo profundos con razonamiento.
 
-## Notas
+## Buenas prácticas
 
 - Revisa los permisos de ejecución antes de desplegar en producción.
 - Mantén los secretos en variables de entorno, nunca en el código.
+- Limita las iteraciones (max steps) para evitar bucles.
+
+## Notas
+
+- Optimizado para ejecución profunda de tareas de sistema.
+- Soporta herramientas de terminal, filesystem y web.

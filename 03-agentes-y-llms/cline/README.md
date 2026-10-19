@@ -21,7 +21,14 @@ Para ahorrar costes, conecta Cline a OpenRouter o a modelos locales vía Ollama:
 - No otorgues permisos de ejecución de comandos destructivos sin revisión.
 - Usa workspaces aislados para experimentos.
 
+## Modelos recomendados
+
+- **Código:** Qwen 2.5 Coder, DeepSeek Coder.
+- **Razonamiento:** Claude 3.5 Sonnet, GPT-4o.
+- **Local:** Llama 3.1 8B / Qwen 2.5 Coder 7B vía Ollama.
+
 ## Notas
 
 - Soporta múltiples proveedores y modelos.
 - Ideal para desarrollo iterativo con control humano.
+- Puede ejecutar comandos en terminal y modificar archivos con aprobación.
