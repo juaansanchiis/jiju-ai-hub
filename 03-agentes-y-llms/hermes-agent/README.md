@@ -1,0 +1,27 @@
+﻿# Hermes Agent
+
+Agente autónomo orientado a la ejecución de tareas de terminal y automatización profunda.
+
+## Configuración y despliegue
+
+1. Clona el repositorio oficial y sigue las instrucciones de instalación.
+2. Configura el modelo backend (API externa o LLM local).
+3. Define las herramientas/acciones permitidas (terminal, filesystem, web).
+
+## Ejemplo de arranque
+
+```bash
+# Ajusta según el repo oficial
+python -m hermes_agent --model openrouter/anthropic/claude-3.5-sonnet --tools terminal,filesystem
+```
+
+## Casos de uso
+
+- Automatización de tareas repetitivas en terminal.
+- Ejecución de scripts y pipelines de datos.
+- Orquestación de flujos de trabajo profundos con razonamiento.
+
+## Notas
+
+- Revisa los permisos de ejecución antes de desplegar en producción.
+- Mantén los secretos en variables de entorno, nunca en el código.
