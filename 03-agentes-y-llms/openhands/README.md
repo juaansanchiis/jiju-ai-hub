@@ -1,6 +1,12 @@
 ﻿# OpenHands (antes OpenDevin)
 
-Framework de agentes de software autónomos.
+Framework de agentes de software autónomos desplegable en Docker.
+
+## Requisitos
+
+- Docker instalado y en ejecución.
+- Al menos 4 GB de RAM disponibles.
+- API key de un proveedor LLM (o Ollama local).
 
 ## Despliegue rápido con Docker
 
@@ -17,21 +23,35 @@ Abre `http://localhost:3000` en el navegador.
 
 ## Configuración del modelo backend
 
-Apunta a LLMs locales con Ollama o a APIs externas editando la configuración:
+### Ollama (local)
 
 ```bash
-# Ejemplo: usar Ollama local
 export LLM_BASE_URL=http://host.docker.internal:11434/v1
 export LLM_MODEL=ollama/llama3.1
 ```
 
-O configura OpenRouter / OpenAI desde la UI de settings.
+### OpenRouter / OpenAI
+
+Configura desde la UI de settings: proveedor, API key y modelo.
 
 ## Casos de uso
 
 - Resolver issues de GitHub de forma autónoma.
 - Refactorizar repositorios completos.
 - Ejecutar tests y corregir errores en bucle.
+- Navegación web para investigación.
+
+## Buenas prácticas
+
+- Limita las iteraciones (max steps) para evitar bucles.
+- Usa sandbox aislado (Docker) para seguridad.
+- Revisa los cambios antes de hacer merge.
+
+## Solución de problemas
+
+- **Docker no arranca:** verifica que el daemon esté activo.
+- **Modelo no responde:** revisa la API key y la URL base.
+- **Sandbox lento:** asigna más recursos a Docker.
 
 ## Notas
 
