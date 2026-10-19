@@ -9,6 +9,10 @@
 - **fetch:** Peticiones HTTP a APIs externas.
 - **sqlite:** Consultas a bases de datos SQLite locales.
 
+## Remotion para Claude (generación de vídeo por código)
+
+Existen adaptadores y servidores MCP que permiten a Claude Desktop generar y renderizar vídeos con Remotion de forma programática (similar al plugin de DeepSeek Harness). Busca servidores MCP de Remotion en el registro de MCP o en GitHub para integrarlos en `claude_desktop_config.json`.
+
 ## Instalación
 
 ```bash
