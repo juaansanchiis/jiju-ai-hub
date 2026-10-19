@@ -27,7 +27,14 @@ export LLM_MODEL=ollama/llama3.1
 
 O configura OpenRouter / OpenAI desde la UI de settings.
 
+## Casos de uso
+
+- Resolver issues de GitHub de forma autónoma.
+- Refactorizar repositorios completos.
+- Ejecutar tests y corregir errores en bucle.
+
 ## Notas
 
 - Requiere Docker para el sandbox de ejecución.
 - Ideal para tareas de ingeniería de software end-to-end.
+- Soporta navegación web y terminal dentro del sandbox.
