@@ -188,7 +188,161 @@ Register-ScheduledTask -TaskName "DailyAI" -Action $action -Trigger $trigger
 
 ---
 
-## 4. Herramientas complementarias
+## 5. Scraping Inteligente y nuevas plataformas
+
+### ScrapeGraphAI
+
+Olvida programar en BeautifulSoup. Es una librería donde le pasas una URL y un prompt: *"Extrae todos los productos, su precio y el email de contacto en un JSON"*. El LLM lee el código fuente, hace la extracción y te devuelve el JSON perfecto.
+
+- **Enlace:** [github.com/VinciGit00/Scrapegraph-ai](https://github.com/VinciGit00/Scrapegraph-ai)
+- **Instalación:**
+
+```bash
+pip install scrapegraphai
+playwright install
+```
+
+- **Uso básico:**
+
+```python
+from scrapegraphai.graphs import SmartScraperGraph
+
+graph_config = {
+    "llm": {
+        "model": "ollama/llama3.1",
+        "temperature": 0,
+        "format": "json",
+        "base_url": "http://localhost:11434",
+    },
+    "embeddings": {
+        "model": "ollama/nomic-embed-text",
+        "base_url": "http://localhost:11434",
+    },
+    "verbose": True,
+}
+
+smart_scraper = SmartScraperGraph(
+    prompt="Extrae todos los productos, su precio y el email de contacto",
+    source="https://example.com/products",
+    config=graph_config,
+)
+
+result = smart_scraper.run()
+print(result)
+```
+
+- **Modos disponibles:**
+  - `SmartScraperGraph`: extrae de una sola página.
+  - `SearchScraperGraph`: busca en la web y extrae.
+  - `SpeechScraperGraph`: extrae y genera audio.
+  - `ScriptCreatorGraph`: genera un script de scraping reutilizable.
+- **Casos de uso:** Extracción de datos de e-commerce, monitorización de precios, recopilación de leads, scraping de documentación.
+- **Alternativas:** Crawl4AI, Firecrawl, Jina Reader.
+
+### Dify / FastGPT
+
+Alternativas a Flowise y Make, pero orientadas a construir aplicaciones RAG (chatbots con tus documentos) con una interfaz visual increíble. Se pueden hostear gratis en local con Docker.
+
+#### Dify
+
+- **Enlace:** [github.com/langgenius/dify](https://github.com/langgenius/dify)
+- **Tipo:** Plataforma LLMOps (RAG, agentes, workflows)
+- **Despliegue:**
+
+```bash
+git clone https://github.com/langgenius/dify.git
+cd dify/docker
+cp .env.example .env
+docker compose up -d
+```
+
+- **Características:** RAG con documentos, agentes con tools, workflows visuales, API REST, soporte multi-modelo (OpenAI, Anthropic, Ollama, etc.).
+- **Casos de uso:** Chatbots empresariales, asistentes de soporte, pipelines de documentos.
+
+#### FastGPT
+
+- **Enlace:** [github.com/labring/FastGPT](https://github.com/labring/FastGPT)
+- **Tipo:** Plataforma RAG con interfaz visual
+- **Despliegue:**
+
+```bash
+git clone https://github.com/labring/FastGPT.git
+cd FastGPT
+docker compose up -d
+```
+
+- **Características:** RAG con documentos, flujos de trabajo visuales, soporte para múltiples modelos, API compatible con OpenAI.
+- **Casos de uso:** Chatbots con documentos, automatización de consultas, asistentes de conocimiento.
+
+### AutoHotkey + LLM (Windows)
+
+Apartado para scripts que conecten atajos de teclado (ej. presionar `Ctrl + Espacio`) con la API de Groq para que corrija lo que acabas de escribir en cualquier app de Windows (Word, WhatsApp Web, Discord).
+
+- **Enlace:** [autohotkey.com](https://www.autohotkey.com/)
+- **Tipo:** Automatización de teclado + LLM
+- **Instalación:** Descarga AutoHotkey v2 desde [autohotkey.com](https://www.autohotkey.com/).
+
+#### Script de ejemplo (AutoHotkey v2)
+
+```autohotkey
+; Ctrl+Espacio: corrige el texto seleccionado con Groq
+^Space::
+{
+    ; Guardar portapapeles
+    oldClip := ClipboardAll()
+    A_Clipboard := ""
+    Send "^c"
+    ClipWait 1
+    text := A_Clipboard
+
+    ; Llamar a Groq
+    apiKey := "gsk_TU_API_KEY"
+    url := "https://api.groq.com/openai/v1/chat/completions"
+    body := '{"model":"llama-3.3-70b-versatile","messages":[{"role":"user","content":"Corrige la ortografía y gramática del siguiente texto, devuelve solo el texto corregido:\n' . text . '"}]}'
+
+    whr := ComObject("WinHttp.WinHttpRequest.5.1")
+    whr.Open("POST", url, false)
+    whr.SetRequestHeader("Content-Type", "application/json")
+    whr.SetRequestHeader("Authorization", "Bearer " . apiKey)
+    whr.Send(body)
+    response := whr.ResponseText
+
+    ; Extraer respuesta (simplificado)
+    ; En producción, parsea el JSON correctamente
+    corrected := "Texto corregido aquí"
+
+    ; Reemplazar texto
+    A_Clipboard := corrected
+    Send "^v"
+    Sleep 100
+    A_Clipboard := oldClip
+}
+return
+```
+
+#### Casos de uso
+
+- Corrección ortográfica en cualquier app de Windows.
+- Traducción rápida de texto seleccionado.
+- Resumen de texto seleccionado.
+- Generación de respuestas rápidas en chat.
+- Formateo de código seleccionado.
+
+#### Alternativas
+
+- **PowerToys (Windows):** Incluye atajos de teclado avanzados.
+- **Espanso:** Expansor de texto multiplataforma.
+- **TextExpander:** Expansión de texto con snippets.
+- **Python + pynput:** Alternativa en Python para capturar atajos y llamar a LLMs.
+
+### Tabla resumen (nuevas herramientas)
+
+| Herramienta | Tipo | Enlace | Descripción |
+| --- | --- | --- | --- |
+| ScrapeGraphAI | Scraping con IA | [github.com/VinciGit00/Scrapegraph-ai](https://github.com/VinciGit00/Scrapegraph-ai) | Extrae datos de webs con prompts |
+| Dify | Plataforma RAG | [github.com/langgenius/dify](https://github.com/langgenius/dify) | LLMOps con interfaz visual |
+| FastGPT | Plataforma RAG | [github.com/labring/FastGPT](https://github.com/labring/FastGPT) | RAG con workflows visuales |
+| AutoHotkey | Automatización Windows | [autohotkey.com](https://www.autohotkey.com/) | Atajos de teclado + LLM |
 
 - **FFmpeg:** Procesamiento de vídeo/audio en scripts.
 - **Pandoc:** Conversión de documentos (Markdown ↔ PDF/DOCX).

@@ -22,6 +22,10 @@ Principales patrones de diseño utilizados para estructurar el comportamiento de
 - **Cline / ex-Claude Dev (`cline/`):** Asistente autónomo dentro de VS Code con permisos avanzados para modificar archivos, ejecutar terminal y manejar herramientas de workspace.
 - **OpenHands / ex-OpenDevin (`openhands/`):** Ingeniero de software de código abierto autónomo desplegable en Docker con capacidades completas de navegación web y terminal.
 - **Hermes Agent (`hermes-agent/`):** Agente optimizado para ejecución profunda de tareas de sistema y automatización avanzada.
+- **Roo Code (`roo-code/`):** Fork de Cline con roles de agente (Architect, Code, Ask, Debug) y manejo avanzado de herramientas.
+- **Swarm (`swarm/`):** Framework experimental de OpenAI para sistemas multi-agente ligeros con handoffs nativos.
+- **Mem0 (`mem0/`):** Capa de memoria a largo plazo para agentes (vectorial + grafo opcional).
+- **Zep (`zep/`):** Memoria a largo plazo con grafos temporales (Graphiti).
 
 ### Otros frameworks de orquestación
 
@@ -31,6 +35,8 @@ Principales patrones de diseño utilizados para estructurar el comportamiento de
 - **AutoGen:** Conversaciones multi-agente con human-in-the-loop. Fuerte en investigación y experimentación.
 - **SWE-agent:** Agente especializado en resolver issues de GitHub de forma autónoma.
 - **Devin (Cognition):** Agente de software comercial con capacidades end-to-end (de pago).
+- **Roo Code:** Fork de Cline con roles de agente y manejo avanzado de herramientas.
+- **Swarm (OpenAI):** Framework experimental multi-agente con handoffs nativos.
 
 ### Cuándo usar cada uno
 
@@ -45,6 +51,22 @@ Principales patrones de diseño utilizados para estructurar el comportamiento de
 | CrewAI | Equipos de agentes con roles | Media |
 | AutoGen | Investigación multi-agente | Media-Alta |
 | SWE-agent | Resolver issues de GitHub | Media |
+
+---
+
+## 2b. Memoria a largo plazo para agentes
+
+Herramientas para darle **memoria persistente** a tus agentes, para que recuerden preferencias, convenciones y contexto entre sesiones.
+
+- **Mem0 (`mem0/`):** Capa de memoria vectorial + grafo opcional. Simple y rápida. Ideal para memoria de preferencias.
+- **Zep (`zep/`):** Memoria con grafos temporales (Graphiti). Rastrea cómo cambian las relaciones a lo largo del tiempo. Ideal para memoria compleja.
+
+### Comparación
+
+| Herramienta | Tipo | Complejidad | Mejor para |
+| --- | --- | --- | --- |
+| Mem0 | Vectorial + grafo opcional | Baja | Memoria simple y rápida |
+| Zep (Graphiti) | Grafo temporal nativo | Media-Alta | Memoria compleja con relaciones |
 
 ---
 
@@ -83,3 +105,7 @@ Principales patrones de diseño utilizados para estructurar el comportamiento de
 | AutoGen | Framework | [microsoft.github.io/autogen](https://microsoft.github.io/autogen/) | Conversaciones multi-agente | Investigación |
 | SWE-agent | Agente | [github.com/princeton-nlp/SWE-agent](https://github.com/princeton-nlp/SWE-agent) | Resolver issues de GitHub | Autónomo |
 | smolagents | Librería | [huggingface.co/docs/smolagents](https://huggingface.co/docs/smolagents/) | Agentes mínimos | Ligero |
+| Roo Code | Extensión VS Code | [github.com/RooVetGit/Roo-Code](https://github.com/RooVetGit/Roo-Code) | Fork de Cline con roles de agente | Architect/Code/Ask/Debug |
+| Swarm | Framework | [github.com/openai/swarm](https://github.com/openai/swarm) | Multi-agente ligero con handoffs | Experimental |
+| Mem0 | Memoria | [github.com/mem0ai/mem0](https://github.com/mem0ai/mem0) | Memoria a largo plazo para agentes | Vectorial + grafo |
+| Zep | Memoria | [github.com/getzep/zep](https://github.com/getzep/zep) | Memoria con grafos temporales | Graphiti |

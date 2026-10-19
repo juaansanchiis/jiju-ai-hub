@@ -15,6 +15,10 @@ Introducción al ecosistema de aplicaciones de escritorio orientadas a IA: clien
   - Servidor local en `http://localhost:1234/v1`.
 - **Jan:** Cliente de escritorio open-source para LLMs locales.
 - **GPT4All:** Cliente de escritorio para modelos locales con RAG integrado.
+- **Screenpipe:** Grabación 24/7 de pantalla/micro con OCR/STT para IA local.
+- **Cursor:** IDE con IA integrada (agente Composer, predicción multi-archivo).
+- **Windsurf:** IDE con IA integrada (agente Cascade, Codeium).
+- **AnythingLLM:** App definitiva para RAG local con tus documentos.
 
 ## Clientes nativos de IA
 
@@ -33,6 +37,10 @@ Introducción al ecosistema de aplicaciones de escritorio orientadas a IA: clien
 | LM Studio | Runtime local | [lmstudio.ai](https://lmstudio.ai/) | GUI para modelos locales |
 | Jan | Cliente local | [jan.ai](https://jan.ai/) | Open-source |
 | GPT4All | Cliente local | [gpt4all.io](https://gpt4all.io/) | RAG integrado |
+| Screenpipe | Grabación local | [github.com/mediar-ai/screenpipe](https://github.com/mediar-ai/screenpipe) | OCR/STT 24/7 |
+| Cursor | IDE con IA | [cursor.com](https://www.cursor.com/) | Agente Composer |
+| Windsurf | IDE con IA | [codeium.com/windsurf](https://codeium.com/windsurf) | Agente Cascade |
+| AnythingLLM | RAG local | [anythingllm.com](https://anythingllm.com/) | Workspaces con documentos |
 | Antigravity | Entorno propio | — | Documentación interna |
 
 ## Índice
@@ -45,4 +53,8 @@ Introducción al ecosistema de aplicaciones de escritorio orientadas a IA: clien
 - [LM Studio](lm-studio/README.md)
 - [Jan](jan/README.md)
 - [GPT4All](gpt4all/README.md)
+- [Screenpipe](screenpipe/README.md)
+- [Cursor](cursor/README.md)
+- [Windsurf](windsurf/README.md)
+- [AnythingLLM](anythingllm/README.md)
 

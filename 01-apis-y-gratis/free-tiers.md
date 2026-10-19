@@ -95,7 +95,97 @@ Varios proveedores ofrecen ventajas a estudiantes verificados (GitHub Student De
 
 ---
 
-## 7. Más proveedores gratuitos / generosos
+## 8. Free Tiers ocultos y trucos avanzados
+
+### GitHub Models (Marketplace)
+
+GitHub está regalando acceso gratuito (con rate limits) a modelos premium como **GPT-4o, o1-mini y Llama 3.1** directamente desde su plataforma.
+
+- **Cómo usarlo:** Genera un Personal Access Token (PAT) en GitHub con scope `models:read` y úsalo como API key apuntando a `https://models.inference.ai.azure.com`.
+- **Modelos disponibles:** GPT-4o, GPT-4o-mini, o1-mini, o1-preview, Llama 3.1 70B/405B, Mistral Large, Cohere Command R+.
+- **Límites Free:** ~150 req/día por modelo (varía), rate limits por minuto. Sin coste.
+- **Código (Python, compatible OpenAI):**
+
+```python
+from openai import OpenAI
+client = OpenAI(
+    base_url="https://models.inference.ai.azure.com",
+    api_key="ghp_TU_TOKEN_AQUI",
+)
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": "Hola"}],
+)
+print(response.choices[0].message.content)
+```
+
+- **Notas:** Ideal para desarrollo y testing sin coste. Los límites son por usuario/token. No apto para producción de alto volumen.
+
+### Cerebras API (Inferencia ultra rápida)
+
+El hardware más rápido del planeta. Tienen un free tier para desarrolladores donde modelos como Llama 3 vuelan a **~1.000 tokens por segundo**. Es instantáneo.
+
+- **Cómo usarlo:** Regístrate en [cloud.cerebras.ai](https://cloud.cerebras.ai/), genera una API key y usa el endpoint compatible con OpenAI.
+- **Modelos disponibles:** Llama 3.1 8B, Llama 3.1 70B, Llama 3.3 70B.
+- **Límites Free:** Tier gratuito con rate limits generosos para desarrollo. ~30 RPM, ~1M tokens/día (variable).
+- **Velocidad:** ~1.000-2.000 tokens/segundo en modelos 70B (vs ~50-100 en GPU tradicional).
+- **Código (Python):**
+
+```python
+from openai import OpenAI
+client = OpenAI(
+    base_url="https://api.cerebras.ai/v1",
+    api_key="csk_TU_API_KEY",
+)
+response = client.chat.completions.create(
+    model="llama3.1-70b",
+    messages=[{"role": "user", "content": "Hola"}],
+)
+print(response.choices[0].message.content)
+```
+
+- **Notas:** Ideal para agentes que necesitan respuestas instantáneas. La velocidad es su principal ventaja.
+
+### g4f (GPT4Free) — APIs no oficiales
+
+Librerías de Python (`g4f`) que hacen ingeniería inversa a las webs que dan IA gratis y te montan una API falsa en tu PC para que tengas OpenAI o Claude gratis saltándote los bloqueos. Ideal para scripts pequeños.
+
+- **Enlace:** [github.com/xtekky/gpt4free](https://github.com/xtekky/gpt4free)
+- **Cómo funciona:** Intercepta las peticiones de las webs gratuitas (ChatGPT web, Claude web, etc.) y las expone como una API compatible con OpenAI en tu máquina.
+- **Instalación:**
+
+```bash
+pip install -U g4f
+```
+
+- **Uso básico:**
+
+```python
+import g4f
+response = g4f.ChatCompletion.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": "Hola"}],
+)
+print(response)
+```
+
+- **Proveedores soportados:** OpenAI (web), Anthropic (web), Google (web), Bing, DuckDuckGo, Blackbox, HuggingChat, y muchos más.
+- **⚠️ Advertencias:**
+  - Viola los términos de servicio de los proveedores.
+  - Inestable: los proveedores cambian sus webs y rompen la librería.
+  - No apto para producción ni datos sensibles.
+  - Úsalo solo para experimentación y scripts personales.
+- **Alternativas similares:** `gpt4free` (forks), `freeGPT`, `g4f` con providers de DuckDuckGo/Blackbox.
+
+---
+
+## Tabla resumen actualizada (free tiers ocultos)
+
+| Proveedor | Servicio | Plan gratuito | Límites típicos | Enlace | Notas |
+| --- | --- | --- | --- | --- | --- |
+| GitHub Models | Modelos premium (GPT-4o, Llama) | Gratis con PAT | ~150 req/día | [github.com/marketplace/models](https://github.com/marketplace/models) | Ideal para dev/testing |
+| Cerebras | Inferencia ultra rápida | Tier gratuito | ~30 RPM, ~1M tokens/día | [cerebras.ai](https://www.cerebras.ai/) | ~1000 tokens/s |
+| g4f (GPT4Free) | API no oficial | Gratis (ingeniería inversa) | Inestable | [github.com/xtekky/gpt4free](https://github.com/xtekky/gpt4free) | Solo experimentación |
 
 - **Perplexity:** Tier gratuito con límites diarios para búsqueda y chat. Perplexity Pro gratis 1 año para estudiantes (.edu).
 - **Fireworks AI:** Créditos iniciales gratuitos para modelos open-source. Precios competitivos.

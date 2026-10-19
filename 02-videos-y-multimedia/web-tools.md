@@ -98,7 +98,58 @@ Si un conector o plugin multimedia pertenece a un agente o app de escritorio de 
 
 ---
 
-## 6. Más herramientas de imagen y vídeo
+## 7. Real-Time, DeepFakes locales y automatización de audio
+
+### LivePortrait (Local)
+
+Es una auténtica locura open-source. Le pasas una foto tuya y un vídeo de alguien hablando (o tu webcam en directo), y anima tu foto frame a frame copiando los gestos con un realismo que asusta. Funciona en local.
+
+- **Enlace:** [github.com/KwaiVGI/LivePortrait](https://github.com/KwaiVGI/LivePortrait)
+- **Tipo:** Animación de retratos / DeepFake local
+- **VRAM:** ~8 GB (GPU NVIDIA recomendada)
+- **Instalación:**
+
+```bash
+git clone https://github.com/KwaiVGI/LivePortrait.git
+cd LivePortrait
+pip install -r requirements.txt
+# Descarga los pesos del modelo (ver README del repo)
+python inference.py --source_image foto.jpg --driving_video video.mp4
+```
+
+- **Casos de uso:** Avatares animados, doblaje visual, contenido para redes sociales, prototipado de personajes.
+- **Alternativas:** SadTalker, Wav2Lip, AnimateAnyone, MagicAnimate.
+
+### ComfyUI Workflows (subcarpeta)
+
+Apartado dedicado a guardar archivos `.json` de ComfyUI con flujos pre-hechos.
+
+- **Ubicación:** [02-videos-y-multimedia/comfyui-workflows/](comfyui-workflows/README.md)
+- **Ejemplos incluidos:**
+  - Upscale con SUPIR (inventa detalles en fotos borrosas).
+  - LCM para generar imágenes en tiempo real mientras dibujas en un canvas.
+  - FLUX.1 [schnell] para generación rápida.
+  - AnimateDiff para animación de imágenes.
+- **Más info:** [comfyui-workflows/README.md](comfyui-workflows/README.md)
+
+### Suno / Udio Unofficial APIs
+
+Scripts para automatizar la generación de canciones o efectos de sonido saltándose la interfaz web.
+
+- **Suno API (no oficial):** [github.com/gcui-art/suno-api](https://github.com/gcui-art/suno-api) — Wrapper que expone Suno como API REST.
+- **Udio (no oficial):** Scripts de automatización con Selenium/Playwright para generar música.
+- **Casos de uso:** Generación masiva de jingles, efectos de sonido para vídeos, prototipado de bandas sonoras.
+- **⚠️ Advertencias:** Viola los términos de servicio. Inestable. Solo para uso personal/experimentación.
+
+### Tabla resumen (nuevas herramientas)
+
+| Herramienta | Tipo | Enlace | Descripción |
+| --- | --- | --- | --- |
+| LivePortrait | DeepFake local | [github.com/KwaiVGI/LivePortrait](https://github.com/KwaiVGI/LivePortrait) | Anima fotos con gestos de vídeo |
+| SadTalker | DeepFake local | [github.com/OpenTalker/SadTalker](https://github.com/OpenTalker/SadTalker) | Anima retratos con audio |
+| Wav2Lip | Lip-sync | [github.com/Rudrabha/Wav2Lip](https://github.com/Rudrabha/Wav2Lip) | Sincroniza labios con audio |
+| Suno API (no oficial) | Automatización | [github.com/gcui-art/suno-api](https://github.com/gcui-art/suno-api) | API REST para Suno |
+| ComfyUI Workflows | Plantillas | [comfyui-workflows/](comfyui-workflows/README.md) | Flujos pre-hechos para ComfyUI |
 
 ### Imagen
 
