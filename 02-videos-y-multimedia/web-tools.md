@@ -95,3 +95,54 @@ Si un conector o plugin multimedia pertenece a un agente o app de escritorio de 
 | Manim | Librería | [manim.community](https://www.manim.community/) | Animaciones matemáticas |
 | FFmpeg (ffmpeg-python) | Librería | [github.com/kkroening/ffmpeg-python](https://github.com/kkroening/ffmpeg-python) | Post-procesado de vídeo |
 | ElevenLabs API SDK | SDK | [elevenlabs.io](https://elevenlabs.io/) | Síntesis de voz |
+
+---
+
+## 6. Más herramientas de imagen y vídeo
+
+### Imagen
+
+- **Midjourney:** Generación de imágenes de alta calidad (de pago, sin tier gratuito permanente; pruebas ocasionales).
+- **DALL·E 3 (OpenAI):** Integrado en ChatGPT; tier gratuito limitado.
+- **Ideogram:** Generación de imágenes con texto legible; tier gratuito diario.
+- **Recraft:** Generación de imágenes y vectores; tier gratuito.
+- **Playground AI:** 500 imágenes/día gratis con modelos SD/SDXL.
+- **Bing Image Creator (DALL·E 3):** Gratuito con cuenta Microsoft.
+
+### Vídeo
+
+- **Sora (OpenAI):** Generación de vídeo (acceso limitado, de pago).
+- **Veo (Google):** Generación de vídeo (acceso limitado).
+- **Haiper:** Generación de vídeo gratuita con créditos diarios.
+- **Vidu:** Generación de vídeo con tier gratuito.
+- **Krea AI:** Generación y edición de imagen/vídeo en tiempo real; tier gratuito.
+
+### Audio / Música
+
+- **Suno:** Canciones completas con voz; tier gratuito (50 créditos/día).
+- **Udio:** Música generada por IA; tier gratuito.
+- **ElevenLabs:** Voz y SFX; tier gratuito (10k caracteres/mes).
+- **Piper (TTS local):** Síntesis de voz local, coste cero.
+- **Coqui TTS:** TTS open-source local.
+
+### Edición
+
+- **CapCut Web:** Subtitulado y edición con IA.
+- **Descript:** Edición de vídeo por texto; tier gratuito limitado.
+- **Clipchamp:** Editor de vídeo web con IA; tier gratuito.
+
+### Tabla adicional
+
+| Herramienta | Tipo | Enlace | Descripción |
+| --- | --- | --- | --- |
+| Ideogram | Imagen | [ideogram.ai](https://ideogram.ai/) | Texto legible en imágenes |
+| Recraft | Imagen/Vectores | [recraft.ai](https://www.recraft.ai/) | Vectores e imágenes |
+| Playground AI | Imagen | [playgroundai.com](https://playgroundai.com/) | 500 img/día gratis |
+| Bing Image Creator | Imagen | [bing.com/images/create](https://www.bing.com/images/create) | DALL·E 3 gratuito |
+| Haiper | Vídeo | [haiper.ai](https://haiper.ai/) | Créditos diarios |
+| Vidu | Vídeo | [vidu.studio](https://www.vidu.studio/) | Tier gratuito |
+| Krea AI | Imagen/Vídeo | [krea.ai](https://www.krea.ai/) | Tiempo real |
+| Piper TTS | Audio (local) | [github.com/rhasspy/piper](https://github.com/rhasspy/piper) | TTS local gratuito |
+| Coqui TTS | Audio (local) | [github.com/coqui-ai/TTS](https://github.com/coqui-ai/TTS) | TTS open-source |
+| Descript | Edición | [descript.com](https://www.descript.com/) | Edición por texto |
+| Clipchamp | Edición | [clipchamp.com](https://clipchamp.com/) | Editor web con IA |

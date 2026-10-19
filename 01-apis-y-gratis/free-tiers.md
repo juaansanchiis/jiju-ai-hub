@@ -92,3 +92,28 @@ Varios proveedores ofrecen ventajas a estudiantes verificados (GitHub Student De
 | Hugging Face | Inference API | Tier gratuito | Rate limits por IP | [huggingface.co](https://huggingface.co/) | Modelos OSS |
 | Together AI | Modelos OSS | Créditos iniciales | Variable | [together.ai](https://www.together.ai/) | $1-$25 créditos |
 | GitHub Copilot | Asistente de código | Gratis (estudiantes) | Ilimitado (estudiantes) | [github.com/features/copilot](https://github.com/features/copilot) | $10/mes sin estudiante |
+
+---
+
+## 7. Más proveedores gratuitos / generosos
+
+- **Perplexity:** Tier gratuito con límites diarios para búsqueda y chat. Perplexity Pro gratis 1 año para estudiantes (.edu).
+- **Fireworks AI:** Créditos iniciales gratuitos para modelos open-source. Precios competitivos.
+- **Cerebras:** Inferencia ultra rápida con tier gratuito para modelos seleccionados.
+- **SambaNova:** Acceso gratuito a modelos open-source con límites de tasa.
+- **Replicate:** Créditos iniciales gratuitos para ejecutar modelos (imagen, vídeo, audio). Pago por segundo de cómputo.
+- **Modal:** Créditos gratuitos para serverless GPU. Ideal para desplegar modelos propios.
+- **Cloudflare Workers AI:** Tier gratuito generoso para modelos en el edge. Ideal para apps serverless.
+- **Vercel AI SDK + proveedores:** Abstracción para cambiar de proveedor fácilmente.
+
+### Tabla adicional
+
+| Proveedor | Servicio | Plan gratuito | Límites típicos | Enlace | Notas |
+| --- | --- | --- | --- | --- | --- |
+| Perplexity | Búsqueda/Chat | Tier gratuito | Límites diarios | [perplexity.ai](https://www.perplexity.ai/) | Pro gratis para estudiantes |
+| Fireworks AI | Modelos OSS | Créditos iniciales | Variable | [fireworks.ai](https://fireworks.ai/) | Rápido y barato |
+| Cerebras | Inferencia | Tier gratuito | Límites de tasa | [cerebras.ai](https://www.cerebras.ai/) | Ultra rápido |
+| SambaNova | Modelos OSS | Tier gratuito | Límites de tasa | [sambanova.ai](https://sambanova.ai/) | Open-source |
+| Replicate | Modelos (img/vid/audio) | Créditos iniciales | Pago por segundo | [replicate.com](https://replicate.com/) | Muchos modelos |
+| Modal | Serverless GPU | Créditos gratuitos | Variable | [modal.com](https://modal.com/) | Desplegar modelos propios |
+| Cloudflare Workers AI | Modelos en edge | Tier gratuito | Generoso | [developers.cloudflare.com/workers-ai](https://developers.cloudflare.com/workers-ai/) | Serverless |

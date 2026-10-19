@@ -8,6 +8,8 @@
 - **git:** Operaciones sobre repositorios Git.
 - **fetch:** Peticiones HTTP a APIs externas.
 - **sqlite:** Consultas a bases de datos SQLite locales.
+- **memory:** Memoria persistente entre conversaciones.
+- **sequential-thinking:** Razonamiento paso a paso.
 
 ## Remotion para Claude (generación de vídeo por código)
 
@@ -39,13 +41,38 @@ npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/ser
     "sqlite": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "C:\\ruta\\a\\db.sqlite"]
+    },
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
     }
   }
 }
 ```
 
-## Notas
+## Otros servidores MCP útiles
+
+- **brave-search:** Búsqueda web con Brave.
+- **puppeteer:** Automatización de navegador.
+- **slack:** Integración con Slack.
+- **google-drive:** Acceso a Google Drive.
+- **postgres:** Consultas a PostgreSQL.
+
+## Buenas prácticas
 
 - Reinicia Claude Desktop tras modificar la configuración.
 - Limita las rutas expuestas al mínimo necesario.
 - Los servidores MCP se ejecutan localmente; sin coste adicional.
+- Usa variables de entorno para secretos.
+
+## Solución de problemas
+
+- **Servidor no arranca:** verifica Node.js y npm instalados.
+- **Claude no ve las tools:** reinicia la app.
+- **Error de permisos:** revisa las rutas en la configuración.
+
+## Notas
+
+- El registro de MCP está en [modelcontextprotocol.io](https://modelcontextprotocol.io/).
+- Los servidores se ejecutan como procesos locales.
+- Sin coste adicional (solo el uso de Claude).

@@ -15,6 +15,9 @@ Pasos detallados.
 
 ## Ejemplos
 Casos de uso concretos.
+
+## Restricciones
+Lo que NO debe hacer.
 ```
 
 ## Ejemplos de skills
@@ -22,8 +25,23 @@ Casos de uso concretos.
 - **Code review:** Revisar PRs con checklist de seguridad y estilo.
 - **Refactor:** Simplificar código manteniendo tests.
 - **Documentación:** Generar docs a partir del código.
+- **Testing:** Generar tests unitarios.
+- **Debugging:** Analizar errores y proponer fixes.
 
-## Notas
+## Buenas prácticas
 
 - Versiona las skills en este repositorio.
 - Mantén cada skill autocontenida y reutilizable.
+- Incluye ejemplos y restricciones.
+- Prueba las skills con casos reales.
+
+## Solución de problemas
+
+- **Skill no se activa:** verifica el formato y la ubicación.
+- **Resultados inconsistentes:** mejora las instrucciones y añade ejemplos.
+- **Skill demasiado larga:** divide en skills más pequeñas.
+
+## Notas
+
+- Las skills son prompts reutilizables.
+- Pueden combinarse para flujos complejos.

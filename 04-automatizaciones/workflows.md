@@ -1,12 +1,16 @@
-﻿# Automatizaciones
+﻿# ⚙️ Automatizaciones
 
-Flujos, scripts y procesos reutilizables.
+Flujos, scripts y procesos reutilizables para automatizar tareas con IA.
 
-## N8N / Flowise / Make
+---
 
-Patrones para montar flujos de automatización locales y gratuitos.
+## 1. Plataformas de Automatización (No-Code / Low-Code)
 
-### n8n self-hosted con Docker
+### n8n (Self-Hosted, gratuito)
+
+La mejor opción para automatización local y gratuita. Soporta webhooks, cron, nodos de IA y más de 400 integraciones.
+
+**Despliegue con Docker:**
 
 ```bash
 docker run -it --rm \
@@ -15,25 +19,46 @@ docker run -it --rm \
   n8nio/n8n
 ```
 
-Abre `http://localhost:5678`. Usa webhooks, cron y nodos de IA para orquestar flujos.
+Abre `http://localhost:5678`. Crea workflows con nodos drag-and-drop.
+
+**Patrones útiles:**
+- Webhook → LLM → Respuesta (chatbot).
+- Cron → Fetch API → Procesar con LLM → Enviar email/Telegram.
+- Trigger de GitHub → Análisis de PR con LLM → Comentario automático.
+
+**Ventajas:** self-hosted, sin límites de ejecuciones, código abierto, nodos de IA nativos (OpenAI, Anthropic, Ollama, Hugging Face).
 
 ### Flowise
 
-Interfaz visual para chains de LangChain. Despliegue con Docker:
+Interfaz visual para chains de LangChain. Ideal para prototipar RAG y agentes sin código.
 
 ```bash
 docker run -d -p 3000:3000 flowiseai/flowise
 ```
 
+**Casos de uso:** chatbots con RAG, agentes con tools, pipelines de documentos.
+
 ### Make (Integromat)
 
-Alternativa SaaS con tier gratuito; útil para integraciones rápidas sin infraestructura.
+Alternativa SaaS con tier gratuito (1000 ops/mes). Útil para integraciones rápidas sin infraestructura.
 
-## Scripts de Python recurrentes
+### Zapier
 
-Pequeños boilerplates para conectar webhooks, procesar JSONs con LLMs y automatizar tareas repetitivas.
+Tier gratuito (100 tasks/mes). Ideal para conectar apps populares (Gmail, Slack, Notion, etc.) sin código.
 
-### Webhook → LLM → respuesta
+### Activepieces
+
+Alternativa open-source a Zapier/Make, self-hostable.
+
+```bash
+docker run -d -p 8080:80 activepieces/activepieces
+```
+
+---
+
+## 2. Scripts de Python Recurrentes
+
+### Webhook → LLM → Respuesta
 
 ```python
 import os, json, requests
@@ -78,10 +103,111 @@ def summarize(items):
     return r.json()["choices"][0]["message"]["content"]
 ```
 
+### Rotación de proveedores (fallback)
+
+```python
+import os, requests
+
+PROVIDERS = [
+    ("https://openrouter.ai/api/v1", os.getenv("OPENROUTER_API_KEY"), "meta-llama/llama-3.1-8b-instruct:free"),
+    ("https://api.groq.com/openai/v1", os.getenv("GROQ_API_KEY"), "llama-3.3-70b-versatile"),
+]
+
+def ask_with_fallback(prompt):
+    for base_url, api_key, model in PROVIDERS:
+        try:
+            r = requests.post(
+                f"{base_url}/chat/completions",
+                headers={"Authorization": f"Bearer {api_key}"},
+                json={"model": model, "messages": [{"role": "user", "content": prompt}]},
+                timeout=30,
+            )
+            if r.status_code == 200:
+                return r.json()["choices"][0]["message"]["content"]
+        except Exception:
+            continue
+    raise RuntimeError("Todos los proveedores fallaron")
+```
+
+### RAG simple con embeddings locales
+
+```python
+import os, requests, numpy as np
+
+def embed(text):
+    r = requests.post(
+        "https://api.openai.com/v1/embeddings",
+        headers={"Authorization": f"Bearer {os.getenv('OPENAI_API_KEY')}"},
+        json={"model": "text-embedding-3-small", "input": text},
+    )
+    return np.array(r.json()["data"][0]["embedding"])
+
+def cosine(a, b):
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+# Indexar documentos
+docs = ["doc1...", "doc2..."]
+index = [(d, embed(d)) for d in docs]
+
+def search(query, k=3):
+    q = embed(query)
+    scored = sorted(index, key=lambda x: cosine(q, x[1]), reverse=True)
+    return [d for d, _ in scored[:k]]
+```
+
+### Automatización con cron (Linux/WSL)
+
+```bash
+# Editar crontab
+crontab -e
+
+# Ejecutar script cada hora
+0 * * * * /usr/bin/python3 /path/to/script.py >> /path/to/log.txt 2>&1
+
+# Ejecutar cada día a las 9am
+0 9 * * * /usr/bin/python3 /path/to/daily.py
+```
+
+### Automatización con Task Scheduler (Windows)
+
+```powershell
+$action = New-ScheduledTaskAction -Execute "python" -Argument "C:\scripts\daily.py"
+$trigger = New-ScheduledTaskTrigger -Daily -At 9am
+Register-ScheduledTask -TaskName "DailyAI" -Action $action -Trigger $trigger
+```
+
+---
+
+## 3. Patrones de Automatización con LLMs
+
+1. **Clasificación de texto:** Enviar texto a un LLM con prompt de clasificación → guardar resultado en DB.
+2. **Extracción de datos:** Prompt con schema JSON → parsear respuesta → validar con Pydantic.
+3. **Resumen de documentos:** Chunking → resumen por chunk → resumen final.
+4. **Generación de contenido:** Prompt con contexto → generar → revisar → publicar.
+5. **Agente con tools:** LLM decide qué tool usar → ejecutar → observar → repetir.
+
+---
+
+## 4. Herramientas complementarias
+
+- **FFmpeg:** Procesamiento de vídeo/audio en scripts.
+- **Pandoc:** Conversión de documentos (Markdown ↔ PDF/DOCX).
+- **Playwright/Selenium:** Automatización de navegador para scraping.
+- **BeautifulSoup:** Parsing de HTML.
+- **APScheduler:** Scheduler en Python para tareas recurrentes.
+- **Celery + Redis:** Colas de tareas distribuidas.
+- **Docker Compose:** Orquestar múltiples servicios (n8n + DB + LLM).
+
+---
+
 ## Tabla resumen
 
-| Nombre del flujo | Herramientas | Enlace | Descripción | Estado |
+| Herramienta | Tipo | Enlace | Descripción | Estado |
 | --- | --- | --- | --- | --- |
-| n8n self-hosted | Docker, n8n | [n8n.io](https://n8n.io/) | Automatización local gratuita | Activo |
-| Flowise | Docker, Flowise | [flowiseai.com](https://flowiseai.com/) | Chains visuales | Activo |
-| Webhook → LLM | Python, OpenRouter | — | Procesamiento de mensajes | Boilerplate |
+| n8n | Plataforma | [n8n.io](https://n8n.io/) | Automatización self-hosted | Activo |
+| Flowise | Plataforma | [flowiseai.com](https://flowiseai.com/) | Chains visuales LangChain | Activo |
+| Make | SaaS | [make.com](https://www.make.com/) | 1000 ops/mes gratis | Activo |
+| Zapier | SaaS | [zapier.com](https://zapier.com/) | 100 tasks/mes gratis | Activo |
+| Activepieces | Plataforma | [activepieces.com](https://www.activepieces.com/) | Open-source | Activo |
+| APScheduler | Librería Python | [apscheduler.readthedocs.io](https://apscheduler.readthedocs.io/) | Scheduler en Python | Activo |
+| Celery | Librería Python | [docs.celeryq.dev](https://docs.celeryq.dev/) | Colas distribuidas | Activo |
