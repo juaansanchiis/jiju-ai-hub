@@ -21,6 +21,24 @@ Bienvenido al **Jiju AI Hub**, un dashboard personal de recursos para IA: APIs y
   - [LM Studio](05-desktop-apps/lm-studio/README.md)
   - [Jan](05-desktop-apps/jan/README.md)
   - [GPT4All](05-desktop-apps/gpt4all/README.md)
+- [Agentes de navegador](06-browser-agents/README.md)
+  - [Browser-use](06-browser-agents/browser-use/README.md)
+  - [Stagehand](06-browser-agents/stagehand/README.md)
+  - [Crawl4AI](06-browser-agents/crawl4ai/README.md)
+- [Visión y control del SO](07-vision-y-control-os/README.md)
+  - [OmniParser](07-vision-y-control-os/omniparser/README.md)
+  - [Qwen2.5-VL](07-vision-y-control-os/qwen2.5-vl/README.md)
+- [GraphRAG](08-graphrag/README.md)
+  - [Microsoft GraphRAG](08-graphrag/microsoft-graphrag/README.md)
+  - [LightRAG](08-graphrag/lightrag/README.md)
+- [Agentes de voz](09-agentes-de-voz/README.md)
+  - [LiveKit](09-agentes-de-voz/livekit/README.md)
+- [Ciberseguridad y RE](10-ciberseguridad/README.md)
+  - [Ghidra + LLM](10-ciberseguridad/ghidra-llm/README.md)
+  - [PentestGPT](10-ciberseguridad/pentestgpt/README.md)
+- [Inferencia y hardware](11-inferencia-y-hardware/README.md)
+  - [llama.cpp](11-inferencia-y-hardware/llama-cpp/README.md)
+  - [Micro-LLMs](11-inferencia-y-hardware/micro-llms/README.md)
 
 ## Enlaces rápidos a proveedores gratuitos favoritos
 
@@ -52,4 +70,10 @@ Las tablas Markdown son el formato preferido para listados comparativos. Los sni
 | Agentes y LLMs | Agentes, frameworks y modelos |
 | Automatizaciones | Flujos, scripts y procesos reutilizables |
 | Apps de escritorio | Conectores, plugins, skills y recursos para apps de escritorio con IA |
+| Agentes de navegador | Control de navegador por IA: scraping, formularios, automatización web |
+| Visión y control del SO | Modelos de visión y agentes que controlan el sistema operativo |
+| GraphRAG | RAG con grafos de conocimiento |
+| Agentes de voz | Agentes de voz en tiempo real (WebRTC) |
+| Ciberseguridad y RE | Reverse engineering y pentesting con IA |
+| Inferencia y hardware | Cuantización, edge AI y hardware embebido |
 
