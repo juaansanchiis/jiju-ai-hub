@@ -17,6 +17,10 @@ Bienvenido al **Jiju AI Hub**, un dashboard personal de recursos para IA: APIs y
   - [DeepSeek Harness](05-desktop-apps/deepseek-harness/README.md)
   - [Claude Desktop](05-desktop-apps/claude-desktop/README.md)
   - [Antigravity](05-desktop-apps/antigravity/README.md)
+  - [Ollama](05-desktop-apps/ollama/README.md)
+  - [LM Studio](05-desktop-apps/lm-studio/README.md)
+  - [Jan](05-desktop-apps/jan/README.md)
+  - [GPT4All](05-desktop-apps/gpt4all/README.md)
 
 ## Enlaces rápidos a proveedores gratuitos favoritos
 
@@ -48,3 +52,4 @@ Las tablas Markdown son el formato preferido para listados comparativos. Los sni
 | Agentes y LLMs | Agentes, frameworks y modelos |
 | Automatizaciones | Flujos, scripts y procesos reutilizables |
 | Apps de escritorio | Conectores, plugins, skills y recursos para apps de escritorio con IA |
+

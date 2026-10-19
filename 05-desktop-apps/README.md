@@ -41,3 +41,8 @@ Introducción al ecosistema de aplicaciones de escritorio orientadas a IA: clien
 - [DeepSeek Harness](deepseek-harness/README.md)
 - [Claude Desktop](claude-desktop/README.md)
 - [Antigravity](antigravity/README.md)
+- [Ollama](ollama/README.md)
+- [LM Studio](lm-studio/README.md)
+- [Jan](jan/README.md)
+- [GPT4All](gpt4all/README.md)
+
