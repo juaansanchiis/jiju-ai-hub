@@ -1,5 +1,47 @@
-# MCP Servers para Claude Desktop
+﻿# MCP Servers para Claude Desktop
 
-| Servidor | Enlace | Notas |
-| --- | --- | --- |
-| Por añadir | — | — |
+**Model Context Protocol (MCP):** Configuración de servidores locales imprescindibles para conectar Claude Desktop a tus archivos y terminal local gratis.
+
+## Servidores imprescindibles
+
+- **filesystem:** Acceso a archivos y carpetas locales.
+- **git:** Operaciones sobre repositorios Git.
+- **fetch:** Peticiones HTTP a APIs externas.
+- **sqlite:** Consultas a bases de datos SQLite locales.
+
+## Instalación
+
+```bash
+npm install -g @modelcontextprotocol/server-filesystem @modelcontextprotocol/server-git @modelcontextprotocol/server-fetch
+```
+
+## Configuración ejemplo
+
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "C:\\ruta\\a\\proyectos"]
+    },
+    "git": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-git"]
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"]
+    },
+    "sqlite": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "C:\\ruta\\a\\db.sqlite"]
+    }
+  }
+}
+```
+
+## Notas
+
+- Reinicia Claude Desktop tras modificar la configuración.
+- Limita las rutas expuestas al mínimo necesario.
+- Los servidores MCP se ejecutan localmente; sin coste adicional.
